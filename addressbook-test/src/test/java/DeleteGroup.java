@@ -9,6 +9,8 @@ public class DeleteGroup extends TestBase {
         selectGroupTodelete();
         //submitGroupDelete
         submitGroupDelete();
+        //returnToGroupPage
+        returnToGroupPage();
     }
 
     public void submitGroupDelete() {

@@ -51,4 +51,10 @@ public class TestBase {
     public void openSite() {
         wd.get("http://localhost/addressbook/");
     }
+    public void submitGroupCreate() {
+        wd.findElement(By.name("submit")).click();
+    }
+    public void returnToGroupPage() {
+        wd.findElement(By.linkText("group page")).click();
+    }
 }

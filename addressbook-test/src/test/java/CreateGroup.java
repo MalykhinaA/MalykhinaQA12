@@ -13,10 +13,13 @@ public class CreateGroup extends TestBase {
         //fillGroupForm
         fillGroupForm("New group", "Header", "Footer");
         //submitGroupCreate
-        wd.findElement(By.name("submit")).click();
+        submitGroupCreate();
         //returnToGroupPage
-        wd.findElement(By.linkText("group page")).click();
+        returnToGroupPage();
     }
+
+
+
 
     public void fillGroupForm(String groupName, String header, String footer) {
         wd.findElement(By.name("group_name")).click();
