@@ -1,22 +1,23 @@
 package tests;
 
-import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class DeleteGroup extends TestBase {
     @Test
     public void deleteGroup() {
-        openGroupPage();
-        int before = wd.findElements(By.name("selected[]")).size();
+        app.openGroupPage();
+        int before = app.getGroupCount();
         //selectGroupTodelete
-        selectGroupTodelete();
+        app.selectGroupTodelete();
         //submitGroupDelete
-        submitGroupDelete();
+        app.submitGroupDelete();
         //returnToGroupPage
-        returnToGroupPage();
-        int after = wd.findElements(By.name("selected[]")).size();
+        app.returnToGroupPage();
+        int after = app.getGroupCount();
         Assert.assertEquals(before, after+1);
     }
+
+
 
 }

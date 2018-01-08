@@ -1,22 +1,22 @@
 package tests;
 
+import model.ContactData;
+import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
-import org.openqa.selenium.*;
 
 public class CreateContact extends TestBase {
 
     @Test
     public void createContact() {
-        int before = wd.findElements(By.xpath("//*[@title='vCard']")).size();
+        int before = app.wd.findElements(By.xpath("//*[@title='vCard']")).size();
         //initCreationContact
-        initCreationContact();
+        app.initCreationContact();
         //fillContactForm
-        fillContactForm("Name", "Surname", "1970");
+        app.fillContactForm(new ContactData("Name", "Surname", "1970"));
         //submitCreationContact
-        submitCreateContact();
-        int after = wd.findElements(By.xpath("//*[@title='vCard']")).size();
+        app.submitCreateContact();
+        int after = app.wd.findElements(By.xpath("//*[@title='vCard']")).size();
         Assert.assertEquals(before+1, after);
     }
 

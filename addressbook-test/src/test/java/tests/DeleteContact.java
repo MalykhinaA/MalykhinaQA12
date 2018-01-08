@@ -1,20 +1,18 @@
 package tests;
 
-import org.openqa.selenium.By;
-import org.testng.annotations.Test;
-import org.openqa.selenium.Alert;
 import org.testng.Assert;
+import org.testng.annotations.Test;
 
 public class DeleteContact extends TestBase {
     @Test
     public void deleteContact() {
-        int before = wd.findElements(By.xpath("//*[@title='vCard']")).size();
+        int before = app.getContactCount();
         //selectContactDelete
-        selectContactDelete();
+        app.selectContactDelete();
         //submitContactDelete
-        submitContactDelete();
-        alertAccept();
-        int after = wd.findElements(By.xpath("//*[@title='vCard']")).size();
+        app.submitContactDelete();
+        app.alertAccept();
+        int after = app.getContactCount();
         Assert.assertEquals(before, after+1);
 
 
