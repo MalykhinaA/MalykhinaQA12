@@ -59,7 +59,7 @@ public class TestBase {
         click(By.linkText("groups"));
     }
     public void openSite() {
-        wd.get("http://localhost:8080/addressbook/");
+        wd.get("http://localhost/addressbook/");
     }
     public void submitGroupCreate() {
         click(By.name("submit"));
