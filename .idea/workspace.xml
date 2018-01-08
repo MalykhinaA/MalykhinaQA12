@@ -1066,8 +1066,8 @@
     <history-entry file="CreateGroup - 2018.01.04 at 20h 31m 21s.xml">
       <configuration name="CreateGroup" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="DeleteContact - 2018.01.04 at 18h 19m 11s.xml">
-      <configuration name="DeleteContact" configurationId="TestNG" />
+    <history-entry file="CreateGroup_createGroup - 2018.01.04 at 20h 45m 58s.xml">
+      <configuration name="CreateGroup.createGroup" configurationId="TestNG" />
     </history-entry>
     <history-entry file="DeleteContact - 2018.01.04 at 18h 51m 47s.xml">
       <configuration name="DeleteContact" configurationId="TestNG" />
