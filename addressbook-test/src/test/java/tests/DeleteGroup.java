@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 
 public class DeleteGroup extends TestBase {
     @Test
-    public void deleteGroup() {
+    public void deleteGroupTest() {
         app.openGroupPage();
         int before = app.getGroupCount();
         //selectGroupTodelete

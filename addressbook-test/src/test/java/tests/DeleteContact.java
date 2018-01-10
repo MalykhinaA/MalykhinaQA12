@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 
 public class DeleteContact extends TestBase {
     @Test
-    public void deleteContact() {
+    public void deleteContactTest() {
         int before = app.getContactCount();
         //selectContactDelete
         app.selectContactDelete();

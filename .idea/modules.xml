@@ -8,6 +8,9 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/addressbook-test.iml" filepath="$PROJECT_DIR$/.idea/modules/addressbook-test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/addressbook-test_main.iml" filepath="$PROJECT_DIR$/.idea/modules/addressbook-test_main.iml" group="addressbook-test" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/addressbook-test_test.iml" filepath="$PROJECT_DIR$/.idea/modules/addressbook-test_test.iml" group="addressbook-test" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/trello-test.iml" filepath="$PROJECT_DIR$/.idea/modules/trello-test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/trello-test_main.iml" filepath="$PROJECT_DIR$/.idea/modules/trello-test_main.iml" group="trello-test" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/trello-test_test.iml" filepath="$PROJECT_DIR$/.idea/modules/trello-test_test.iml" group="trello-test" />
     </modules>
   </component>
 </project>

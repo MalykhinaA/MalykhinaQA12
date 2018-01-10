@@ -3,6 +3,7 @@ package application;
 import model.ContactData;
 import model.GroupData;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 
@@ -18,6 +19,14 @@ public class ApplicationManager {
         openSite();
         //login
         login("admin", "secret");
+    }
+    public static boolean isAlertPresent(FirefoxDriver wd) {
+        try {
+            wd.switchTo().alert();
+            return true;
+        } catch (NoAlertPresentException e) {
+            return false;
+        }
     }
 
     public void stop() {

@@ -8,6 +8,8 @@
       <module name="MalykhinaQA12_test" target="1.8" />
       <module name="Sandbox12_main" target="1.8" />
       <module name="Sandbox12_test" target="1.8" />
+      <module name="trello-test_main" target="1.8" />
+      <module name="trello-test_test" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

@@ -8,16 +8,18 @@ import org.testng.annotations.Test;
 public class CreateContact extends TestBase {
 
     @Test
-    public void createContact() {
-        int before = app.wd.findElements(By.xpath("//*[@title='vCard']")).size();
+    public void createContactTest() {
+        int before = app.getContactCount();
         //initCreationContact
         app.initCreationContact();
         //fillContactForm
         app.fillContactForm(new ContactData("Name", "Surname", "1970"));
         //submitCreationContact
         app.submitCreateContact();
-        int after = app.wd.findElements(By.xpath("//*[@title='vCard']")).size();
+        int after = app.getContactCount();
         Assert.assertEquals(before+1, after);
     }
+
+
 
 }

@@ -8,10 +8,10 @@ import org.testng.annotations.Test;
 public class CreateGroup extends TestBase {
 
     @Test
-    public void createGroup() {
+    public void createGroupTest() {
         //openGroupPage
         app.openGroupPage();
-        int before = app.wd.findElements(By.name("selected[]")).size();
+        int before = app.getGroupCount();
         //initGroupCreation
         app.initGroupCreation();
         //fillGroupForm
@@ -20,7 +20,7 @@ public class CreateGroup extends TestBase {
         app.submitGroupCreate();
         //returnToGroupPage
         app.returnToGroupPage();
-        int after = app.wd.findElements(By.name("selected[]")).size();
+        int after = app.getGroupCount();
         Assert.assertEquals(before,after-1);
 
     }
