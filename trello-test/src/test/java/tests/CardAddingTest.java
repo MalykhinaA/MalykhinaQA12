@@ -1,26 +1,28 @@
 package tests;
 
+import model.CardData;
+import model.ListData;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class CardAddingTest extends TestBase {
     @Test
     public void cardAddingTest() {
-        app.openBoard();
-        int listCount = app.getListCount();
+        app.getNavigationHelper().openBoard();
+        int listCount = app.getListHelper().getListCount();
         if (listCount == 0) {
-            app.initListAdding();
-            app.typeListTitle("List Title");
-            app.submitListCreation();
+            app.getListHelper().initListAdding();
+            app.getListHelper().typeListTitle(new ListData("List Title"));
+            app.getListHelper().submitListCreation();
         }
-        int before = app.getCardCount();
+        int before = app.getCardHelper().getCardCount();
         //initCardAdding
-        app.initCardAdding();
+        app.getCardHelper().initCardAdding();
         //typeCardTitle
-        app.typeCardTitle("new card");
+        app.getCardHelper().typeCardTitle(new CardData("new card"));
         //confirmCardAdding
-        app.confirmCardAdding();
-        int after = app.getCardCount();
+        app.getCardHelper().confirmCardAdding();
+        int after = app.getCardHelper().getCardCount();
         Assert.assertEquals(before, after - 1);
     }
 

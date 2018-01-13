@@ -6,23 +6,23 @@ import org.testng.annotations.Test;
 public class CardArchivingTest extends TestBase {
     @Test
     public void cardArchivingTest() {
-        app.openBoard();
-        int listCount = app.getListCount();
-        int before = app.getCardCount();
+        app.getNavigationHelper().openBoard();
+        int listCount = app.getListHelper().getListCount();
+        int before = app.getCardHelper().getCardCount();
         if (listCount == 0) {
-            app.addList("List Title");
+            app.getListHelper().addList("List Title");
         }
         if (before == 0) {
-            app.addCard("new card");
-            before = app.getCardCount();
+            app.getCardHelper().addCard("new card");
+            before = app.getCardHelper().getCardCount();
         }
         //openCard
-        app.openCard();
+        app.getCardHelper().openCard();
         //submitCardArchiving
-        app.submitCardArchiving();
+        app.getCardHelper().submitCardArchiving();
         //closeCard
-        app.closeCard();
-        int after = app.getCardCount();
+        app.getCardHelper().closeCard();
+        int after = app.getCardHelper().getCardCount();
         Assert.assertEquals(before, after + 1);
 
     }

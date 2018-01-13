@@ -7,20 +7,20 @@ public class BoardClosingTest extends TestBase {
 
     @Test
     public void BoardClosingTest() {
-        int before = app.getBoardCount();
+        int before = app.getBoardHelper().getBoardCount();
         if(before == 0){
-            app.boardCreation("New board Title");
+            app.getBoardHelper().boardCreation("New board Title");
         }
         //openBoard
-        app.openBoard();
+        app.getNavigationHelper().openBoard();
         //openMoreMenu
-        app.openMoreMenu();
+        app.getBoardHelper().openMoreMenu();
         //initBoardClosing
-        app.initBoardClosing();
+        app.getBoardHelper().initBoardClosing();
         //confirmBoardClosing
-        app.confirmBoardClosing();
-        app.goToBoardsPage();
-        int after = app.getBoardCount();
+        app.getBoardHelper().confirmBoardClosing();
+        app.getNavigationHelper().goToBoardsPage();
+        int after = app.getBoardHelper().getBoardCount();
         Assert.assertEquals(before, after + 1);
     }
 

@@ -4,6 +4,8 @@
     <bytecodeTargetLevel>
       <module name="addressbook-test_main" target="1.8" />
       <module name="addressbook-test_test" target="1.8" />
+      <module name="MalykhinaQA12-addressbook-test_main" target="1.8" />
+      <module name="MalykhinaQA12-addressbook-test_test" target="1.8" />
       <module name="MalykhinaQA12_main" target="1.8" />
       <module name="MalykhinaQA12_test" target="1.8" />
       <module name="Sandbox12_main" target="1.8" />

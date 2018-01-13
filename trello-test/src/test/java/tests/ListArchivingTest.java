@@ -6,17 +6,17 @@ import org.testng.annotations.Test;
 public class ListArchivingTest extends TestBase {
     @Test
     public void listArchivingTest() {
-        app.openBoard();
-        int before = app.getListCount();
+        app.getNavigationHelper().openBoard();
+        int before = app.getListHelper().getListCount();
         if (before == 0) {
-            app.addList("List Title");
-            before = app.getListCount();
+            app.getListHelper().addList("List Title");
+            before = app.getListHelper().getListCount();
         }
         //initListArchiving
-        app.initListArchiving();
+        app.getListHelper().initListArchiving();
         //submitListArchiving
-        app.submitListArchiving();
-        int after = app.getListCount();
+        app.getListHelper().submitListArchiving();
+        int after = app.getListHelper().getListCount();
         Assert.assertEquals(before, after + 1);
 
     }
