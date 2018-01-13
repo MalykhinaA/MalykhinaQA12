@@ -6,6 +6,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class BoardHelper extends HelperBase{
 
+    NavigationHelper navigationHelper = new NavigationHelper(wd);
+
     public BoardHelper(FirefoxDriver wd) {
         super(wd);
     }
@@ -43,7 +45,10 @@ public class BoardHelper extends HelperBase{
         initBoardCreation();
         typeBoardTitle(new BoardData(boardTitle));
         submitBoardCreation();
-        NavigationHelper.goToBoardsPage(); //!!!!! This method was red and I needed to make methods goToBoardsPage, click and variable wd static
+        navigationHelper.goToBoardsPage(); //!!!!! This method was red and I needed to make methods goToBoardsPage, click and variable wd static
+    //1. зачем нам этот метод? зачем нам возвращаться на страницу досок?
+
+
     }
 
 

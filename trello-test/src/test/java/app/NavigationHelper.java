@@ -8,7 +8,7 @@ public class NavigationHelper extends HelperBase{
         super(wd);
     }
 
-    public static void goToBoardsPage() {
+    public void goToBoardsPage() {
         click(By.className("header-logo-default"));
     }
 

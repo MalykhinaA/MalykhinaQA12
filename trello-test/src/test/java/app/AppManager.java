@@ -9,11 +9,12 @@ import java.util.concurrent.TimeUnit;
 
 public class AppManager {
 
-    public HelperBase helperBase;
+    //public HelperBase helperBase;
     public BoardHelper boardHelper;
     public ListHelper listHelper;
     public CardHelper cardHelper;
     public NavigationHelper navigationHelper;
+    public SessionHelper sessionHelper;
 
     FirefoxDriver wd;
 
@@ -21,41 +22,22 @@ public class AppManager {
     public void start() {
         wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true));
         wd.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        openSite();
+        sessionHelper= new SessionHelper(wd);
+        sessionHelper.openSite();
         boardHelper = new BoardHelper(wd);
         listHelper = new ListHelper(wd);
         cardHelper = new CardHelper(wd);
         navigationHelper = new NavigationHelper(wd);
-        helperBase = new HelperBase(wd);
-        login("qa12Test", "qa12Test");
+        //helperBase = new HelperBase(wd);
+
+        sessionHelper.login("qa12Test", "qa12Test");
 
     }
-
-    public void login(String userName, String password) {
-        helperBase.click(By.linkText("Log In"));
-        helperBase.type(By.id("user"), userName);
-        helperBase.type(By.id("password"), password);
-        helperBase.click(By.id("login"));
-    }
-
-
-    public void openSite() {
-        helperBase.wd.get("https://trello.com/");
-    }
-
-    //tearDown
     public void stop() {
-        helperBase.wd.quit();
+        wd.quit();
     }
 
-    public static boolean isAlertPresent(FirefoxDriver wd) {
-        try {
-            wd.switchTo().alert();
-            return true;
-        } catch (NoAlertPresentException e) {
-            return false;
-        }
-    }
+
 
 
     public BoardHelper getBoardHelper() {
@@ -74,7 +56,11 @@ public class AppManager {
         return navigationHelper;
     }
 
-    public HelperBase getHelperBase() {
-        return helperBase;
+    //public HelperBase getHelperBase() {
+//        return helperBase;
+//    }
+
+    public SessionHelper getSessionHelper() {
+        return sessionHelper;
     }
 }
