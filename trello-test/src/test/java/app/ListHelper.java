@@ -4,7 +4,7 @@ import model.ListData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-public class ListHelper extends HelperBase{
+public class ListHelper extends HelperBase {
     public ListHelper(FirefoxDriver wd) {
         super(wd);
     }
@@ -34,6 +34,7 @@ public class ListHelper extends HelperBase{
     public void initListArchiving() {
         click(By.xpath("//*[@class='icon-sm icon-overflow-menu-horizontal']"));
     }
+
     public void addList(String listTitle) {
         initListAdding();
         typeListTitle(new ListData(listTitle));

@@ -4,7 +4,7 @@ import model.CardData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-public class CardHelper extends HelperBase{
+public class CardHelper extends HelperBase {
 
     public CardHelper(FirefoxDriver wd) {
         super(wd);

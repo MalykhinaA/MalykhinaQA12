@@ -1,10 +1,11 @@
 package app;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class HelperBase {
-    static FirefoxDriver wd;
+    FirefoxDriver wd;
 
     public HelperBase(FirefoxDriver wd) {
         this.wd = wd;
@@ -16,7 +17,17 @@ public class HelperBase {
         wd.findElement(locator).sendKeys(text);
     }
 
-    public static void click(By locator) {
+    public void click(By locator) {
         wd.findElement(locator).click();
     }
+
+    public static boolean isAlertPresent(FirefoxDriver wd) {
+        try {
+            wd.switchTo().alert();
+            return true;
+        } catch (NoAlertPresentException e) {
+            return false;
+        }
+    }
+
 }

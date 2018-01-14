@@ -4,7 +4,7 @@ import model.BoardData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-public class BoardHelper extends HelperBase{
+public class BoardHelper extends HelperBase {
 
     public BoardHelper(FirefoxDriver wd) {
         super(wd);
@@ -36,16 +36,16 @@ public class BoardHelper extends HelperBase{
     public void initBoardClosing() {
         click(By.xpath("//*[@class='board-menu-navigation-item-link js-close-board']"));
     }
+
     public void openMoreMenu() {
         click(By.xpath("//*[@class='board-menu-navigation-item-link js-open-more']"));
     }
+
     public void boardCreation(String boardTitle) {
         initBoardCreation();
         typeBoardTitle(new BoardData(boardTitle));
         submitBoardCreation();
-        NavigationHelper.goToBoardsPage(); //!!!!! This method was red and I needed to make methods goToBoardsPage, click and variable wd static
     }
-
 
 
 }

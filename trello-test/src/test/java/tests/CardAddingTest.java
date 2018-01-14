@@ -8,6 +8,10 @@ import org.testng.annotations.Test;
 public class CardAddingTest extends TestBase {
     @Test
     public void cardAddingTest() {
+        int boardCount = app.getBoardHelper().getBoardCount();
+        if (boardCount == 0) {
+            app.getBoardHelper().boardCreation("New board Title");
+        }
         app.getNavigationHelper().openBoard();
         int listCount = app.getListHelper().getListCount();
         if (listCount == 0) {

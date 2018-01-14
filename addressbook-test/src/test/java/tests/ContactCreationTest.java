@@ -16,9 +16,8 @@ public class ContactCreationTest extends TestBase {
         //submitCreationContact
         app.getContactHelper().submitCreateContact();
         int after = app.getContactHelper().getContactCount();
-        Assert.assertEquals(before+1, after);
+        Assert.assertEquals(before + 1, after);
     }
-
 
 
 }

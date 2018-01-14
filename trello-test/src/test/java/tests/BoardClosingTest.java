@@ -8,7 +8,7 @@ public class BoardClosingTest extends TestBase {
     @Test
     public void BoardClosingTest() {
         int before = app.getBoardHelper().getBoardCount();
-        if(before == 0){
+        if (before == 0) {
             app.getBoardHelper().boardCreation("New board Title");
         }
         //openBoard
@@ -23,8 +23,6 @@ public class BoardClosingTest extends TestBase {
         int after = app.getBoardHelper().getBoardCount();
         Assert.assertEquals(before, after + 1);
     }
-
-
 
 
 }

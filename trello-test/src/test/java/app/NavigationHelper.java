@@ -3,12 +3,12 @@ package app;
 import org.openqa.selenium.By;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-public class NavigationHelper extends HelperBase{
+public class NavigationHelper extends HelperBase {
     public NavigationHelper(FirefoxDriver wd) {
         super(wd);
     }
 
-    public static void goToBoardsPage() {
+    public void goToBoardsPage() {
         click(By.className("header-logo-default"));
     }
 

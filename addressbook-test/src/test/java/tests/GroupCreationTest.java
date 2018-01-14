@@ -20,7 +20,7 @@ public class GroupCreationTest extends TestBase {
         //returnToGroupPage
         app.getGroupHelper().returnToGroupPage();
         int after = app.getGroupHelper().getGroupCount();
-        Assert.assertEquals(before,after-1);
+        Assert.assertEquals(before, after - 1);
 
     }
 

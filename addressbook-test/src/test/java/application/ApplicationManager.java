@@ -1,6 +1,5 @@
 package application;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
@@ -9,6 +8,7 @@ import java.util.concurrent.TimeUnit;
 
 
 public class ApplicationManager {
+    public SessionHelper sessionHelper;
     public HelperBase helperBase;
     public ContactHelper contactHelper;
     public GroupHelper groupHelper;
@@ -18,16 +18,18 @@ public class ApplicationManager {
 
     public void start() {
         wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true));
-       wd.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        wd.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         //goToSite
-        openSite();
+        sessionHelper = new SessionHelper(wd);
+        sessionHelper.openSite();
         groupHelper = new GroupHelper(wd);
-        contactHelper = new  ContactHelper(wd);
+        contactHelper = new ContactHelper(wd);
         navigationHelper = new NavigationHelper(wd);
         helperBase = new HelperBase(wd);
         //login
-        login("admin", "secret");
+        sessionHelper.login("admin", "secret");
     }
+
     public static boolean isAlertPresent(FirefoxDriver wd) {
         try {
             wd.switchTo().alert();
@@ -41,17 +43,6 @@ public class ApplicationManager {
         wd.quit();
     }
 
-
-    //Methods
-    public void login(String userName, String password) {
-        helperBase.type(By.name("user"), userName);
-       helperBase.type(By.name("pass"), password);
-       helperBase.click(By.xpath("//input[@value='Login']"));
-    }
-
-    public void openSite() {
-        wd.get("http://localhost/addressbook/");
-    }
 
     public void alertAccept() {
         wd.switchTo().alert().accept();
@@ -71,5 +62,9 @@ public class ApplicationManager {
 
     public HelperBase getHelperBase() {
         return helperBase;
+    }
+
+    public SessionHelper getSessionHelper() {
+        return sessionHelper;
     }
 }
