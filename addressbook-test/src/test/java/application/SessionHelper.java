@@ -1,10 +1,10 @@
 package application;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.WebDriver;
 
 public class SessionHelper extends HelperBase {
-    public SessionHelper(FirefoxDriver wd) {
+    public SessionHelper(WebDriver wd) {
         super(wd);
     }
 
@@ -15,7 +15,7 @@ public class SessionHelper extends HelperBase {
         click(By.xpath("//input[@value='Login']"));
     }
 
-    public void openSite() {
-        wd.get("http://localhost/addressbook/");
+    public void openSite(String url) {
+        wd.get(url);
     }
 }
