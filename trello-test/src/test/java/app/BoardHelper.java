@@ -2,11 +2,11 @@ package app;
 
 import model.BoardData;
 import org.openqa.selenium.By;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.WebDriver;
 
 public class BoardHelper extends HelperBase {
 
-    public BoardHelper(FirefoxDriver wd) {
+    public BoardHelper(WebDriver wd) {
         super(wd);
     }
 
@@ -46,6 +46,18 @@ public class BoardHelper extends HelperBase {
         typeBoardTitle(new BoardData(boardTitle));
         submitBoardCreation();
     }
+    public void openBoardsList() {
+        click(By.className("header-btn-text"));
+    }
 
 
+    public void openClosedBoards() {
+        click(By.xpath("//*[@class='quiet-button js-open-closed-boards']"));
+    }
+
+    public void submitBoardReopening() {
+        //click(By.className("button-link js-reopen"));
+        click(By.xpath("//*[@class='button-link js-reopen']"));
+
+    }
 }

@@ -1,13 +1,14 @@
 package tests;
 
 import app.AppManager;
+import org.openqa.selenium.remote.BrowserType;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
 
 public class TestBase {
 
-    protected AppManager app = new AppManager();
+    protected AppManager app = new AppManager(BrowserType.FIREFOX);
 
 
     @BeforeClass

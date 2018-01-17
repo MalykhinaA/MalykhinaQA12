@@ -2,11 +2,11 @@ package app;
 
 import model.CardData;
 import org.openqa.selenium.By;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.WebDriver;
 
 public class CardHelper extends HelperBase {
 
-    public CardHelper(FirefoxDriver wd) {
+    public CardHelper(WebDriver wd) {
         super(wd);
     }
 

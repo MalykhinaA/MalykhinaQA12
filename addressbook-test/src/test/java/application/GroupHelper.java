@@ -27,7 +27,7 @@ public class GroupHelper extends HelperBase {
         click(By.xpath("//input[@name='delete']"));
     }
 
-    public void selectGroupTodelete() {
+    public void selectGroup() {
         click(By.xpath("//input[@type='checkbox']"));
     }
 
@@ -39,5 +39,13 @@ public class GroupHelper extends HelperBase {
 
     public void initGroupCreation() {
         click(By.name("new"));
+    }
+
+    public void initGroupModification() {
+        click(By.name("edit"));
+    }
+
+    public void confirmGroupModification() {
+        click(By.name("update"));
     }
 }

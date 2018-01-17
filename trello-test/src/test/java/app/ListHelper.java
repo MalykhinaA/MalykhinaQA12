@@ -2,10 +2,10 @@ package app;
 
 import model.ListData;
 import org.openqa.selenium.By;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.WebDriver;
 
 public class ListHelper extends HelperBase {
-    public ListHelper(FirefoxDriver wd) {
+    public ListHelper(WebDriver wd) {
         super(wd);
     }
 
