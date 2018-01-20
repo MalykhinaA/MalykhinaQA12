@@ -24,8 +24,9 @@ public class CardHelper extends HelperBase {
     }
 
     public void initCardAdding() {
-        click(By.xpath("//*[@class='open-card-composer js-open-card-composer']"));
+        click(By.xpath("//*[@class='js-add-card']"));
     }
+
 
     //CardArchivingMethods
     public void closeCard() {
@@ -45,5 +46,13 @@ public class CardHelper extends HelperBase {
         initCardAdding();
         typeCardTitle(new CardData(cardTitle));
         confirmCardAdding();
+    }
+
+    public boolean isCardPresent() {
+        return isElementPresent(By.xpath("//*[@class='list-card-title js-card-name']"));
+    }
+
+    public void openCardByIndex(int index) {
+        wd.findElements(By.xpath("//*[@class='list-card-details']")).get(index).click();
     }
 }

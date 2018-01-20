@@ -31,13 +31,20 @@ public class ListHelper extends HelperBase {
         click(By.xpath("//*[@class='js-close-list']"));
     }
 
-    public void initListArchiving() {
+    public void openListActions() {
         click(By.xpath("//*[@class='icon-sm icon-overflow-menu-horizontal']"));
     }
+    public void openListActionsByIndex(int index) {
+        wd.findElements(By.xpath("//*[@class='icon-sm icon-overflow-menu-horizontal']")).get(index).click();
+    }
 
-    public void addList(String listTitle) {
+    public void addList(ListData list) {
         initListAdding();
-        typeListTitle(new ListData(listTitle));
+        typeListTitle(list);
         submitListCreation();
+    }
+
+    public boolean isListPresent() {
+        return isElementPresent(By.xpath("//*[@class='list js-list-content']"));
     }
 }

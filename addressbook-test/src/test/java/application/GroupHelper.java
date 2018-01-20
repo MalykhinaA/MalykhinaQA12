@@ -15,7 +15,7 @@ public class GroupHelper extends HelperBase {
     }
 
 
-    public void submitGroupCreate() {
+    public void submitGroupCreation() {
         click(By.name("submit"));
     }
 
@@ -23,12 +23,16 @@ public class GroupHelper extends HelperBase {
         click(By.linkText("group page"));
     }
 
-    public void submitGroupDelete() {
+    public void submitGroupDeletion() {
         click(By.xpath("//input[@name='delete']"));
     }
 
     public void selectGroup() {
         click(By.xpath("//input[@type='checkbox']"));
+    }
+
+    public void selectGroupByIndex(int index){
+        wd.findElements(By.xpath("//input[@type='checkbox']")).get(index).click();
     }
 
     public void fillGroupForm(GroupData groupData) {
@@ -47,5 +51,16 @@ public class GroupHelper extends HelperBase {
 
     public void confirmGroupModification() {
         click(By.name("update"));
+    }
+
+    public boolean isGroupPresent() {
+        return isElementPresent(By.name("selected[]"));
+    }
+
+    public void createGroup(GroupData group) {
+        initGroupCreation();
+        fillGroupForm(group);
+        submitGroupCreation();
+        returnToGroupPage();
     }
 }

@@ -1,5 +1,6 @@
 package tests;
 
+import model.BoardData;
 import model.ListData;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -8,11 +9,12 @@ public class ListAddingTest extends TestBase {
 
     @Test
     public void listAddingTest() {
-        int boardCount = app.getBoardHelper().getBoardCount();
-        if (boardCount == 0) {
-            app.getBoardHelper().boardCreation("New board Title");
+        if (!app.getBoardHelper().isBoardPresent()) {
+            app.getBoardHelper().createBoard(new BoardData("New board Title"));
         }
-        app.getNavigationHelper().openBoard();
+        int boardCount = app.getBoardHelper().getBoardCount();
+        app.getNavigationHelper().openBoardByIndex(boardCount - 1);
+
         int before = app.getListHelper().getListCount();
         app.getListHelper().initListAdding();
         app.getListHelper().typeListTitle(new ListData("List Title"));

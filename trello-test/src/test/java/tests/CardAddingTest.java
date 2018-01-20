@@ -1,5 +1,6 @@
 package tests;
 
+import model.BoardData;
 import model.CardData;
 import model.ListData;
 import org.testng.Assert;
@@ -8,27 +9,25 @@ import org.testng.annotations.Test;
 public class CardAddingTest extends TestBase {
     @Test
     public void cardAddingTest() {
+        if (!app.getBoardHelper().isBoardPresent()) {
+            app.getBoardHelper().createBoard(new BoardData("New board Title"));
+        }
         int boardCount = app.getBoardHelper().getBoardCount();
-        if (boardCount == 0) {
-            app.getBoardHelper().boardCreation("New board Title");
+        app.getNavigationHelper().openBoardByIndex(boardCount - 1);
+        if (!app.getListHelper().isListPresent()) {
+            app.getListHelper().addList(new ListData("title of list"));
         }
-        app.getNavigationHelper().openBoard();
         int listCount = app.getListHelper().getListCount();
-        if (listCount == 0) {
-            app.getListHelper().initListAdding();
-            app.getListHelper().typeListTitle(new ListData("List Title"));
-            app.getListHelper().submitListCreation();
-        }
         int before = app.getCardHelper().getCardCount();
-        //initCardAdding
+        app.getListHelper().openListActionsByIndex(listCount-1);
         app.getCardHelper().initCardAdding();
-        //typeCardTitle
         app.getCardHelper().typeCardTitle(new CardData("new card"));
-        //confirmCardAdding
         app.getCardHelper().confirmCardAdding();
         int after = app.getCardHelper().getCardCount();
         Assert.assertEquals(before, after - 1);
     }
+
+
 
 
 }

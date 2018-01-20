@@ -14,15 +14,18 @@ public class ContactHelper extends HelperBase {
         return wd.findElements(By.xpath("//*[@title='vCard']")).size();
     }
 
-    public void submitContactDelete() {
+    public void submitContactDeletion() {
         click(By.xpath("//input[@value='Delete']"));
     }
 
-    public void selectContactDelete() {
+    public void selectContact() {
         click(By.xpath("//input[@type='checkbox']"));
     }
 
-    public void submitCreateContact() {
+    public void selectContactByIndex(int index) {
+        wd.findElements(By.xpath("//input[@type='checkbox']")).get(index).click();
+    }
+    public void submitContactCreation() {
         click(By.xpath("//input[@name='submit']"));
     }
 
@@ -34,15 +37,26 @@ public class ContactHelper extends HelperBase {
         type(By.name("byear"), contactData.getYear());
     }
 
-    public void initCreationContact() {
+    public void initContactCreation() {
         click(By.linkText("add new"));
     }
 
-    public void initContactModification() {
-        click(By.xpath("//*[@title='Edit']"));
+    public void initContactModification(int index ) {
+        wd.findElements(By.xpath("//*[@title='Edit']")).get(index).click();
     }
 
     public void confirmContactModification() {
         click(By.name("update"));
     }
+
+    public boolean isContactPresent() {
+        return isElementPresent(By.xpath("//*[@title='vCard']"));
+    }
+
+    public void createContact(ContactData contact) {
+        initContactCreation();
+        fillContactForm(contact);
+        submitContactCreation();
+    }
+
 }

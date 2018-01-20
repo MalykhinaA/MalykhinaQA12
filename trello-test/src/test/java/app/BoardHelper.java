@@ -6,6 +6,8 @@ import org.openqa.selenium.WebDriver;
 
 public class BoardHelper extends HelperBase {
 
+    NavigationHelper navigationHelper = new NavigationHelper(wd);
+
     public BoardHelper(WebDriver wd) {
         super(wd);
     }
@@ -41,9 +43,9 @@ public class BoardHelper extends HelperBase {
         click(By.xpath("//*[@class='board-menu-navigation-item-link js-open-more']"));
     }
 
-    public void boardCreation(String boardTitle) {
+    public void createBoard(BoardData board) {
         initBoardCreation();
-        typeBoardTitle(new BoardData(boardTitle));
+        typeBoardTitle(board);
         submitBoardCreation();
     }
     public void openBoardsList() {
@@ -59,5 +61,35 @@ public class BoardHelper extends HelperBase {
         //click(By.className("button-link js-reopen"));
         click(By.xpath("//*[@class='button-link js-reopen']"));
 
+    }
+    public void submitBoardReopeningByIndex(int index) {
+        wd.findElements(By.xpath("//*[@class='button-link js-reopen']")).get(index).click();
+    }
+    public boolean isBoardPresent() {
+        return isElementPresent(By.xpath("//*[@class='board-tile-details-name']"));
+    }
+
+    public int getClosedBoardCount() {
+        return wd.findElements(By.xpath("//*[@class='button-link js-reopen']")).size();
+    }
+
+
+    public boolean isClosedBoardPresent() {
+        return isElementPresent(By.xpath("//*[@class='button-link js-reopen']"));
+    }
+
+    public void closeBoard() {
+        if (!isBoardPresent()) {
+            createBoard(new BoardData("New board Title"));
+        }
+        navigationHelper.openBoard();
+        openMoreMenu();
+        initBoardClosing();
+        confirmBoardClosing();
+        navigationHelper.goToBoardsPage();
+    }
+
+    public void closeClosedBoardList() {
+        click(By.xpath("//*[@class='icon-lg icon-close dialog-close-button js-close-window']"));
     }
 }

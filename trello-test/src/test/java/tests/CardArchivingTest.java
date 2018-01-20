@@ -1,27 +1,28 @@
 package tests;
 
+import model.BoardData;
+import model.ListData;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class CardArchivingTest extends TestBase {
     @Test
     public void cardArchivingTest() {
+        if (!app.getBoardHelper().isBoardPresent()) {
+            app.getBoardHelper().createBoard(new BoardData("New board Title"));
+        }
         int boardCount = app.getBoardHelper().getBoardCount();
-        if (boardCount == 0) {
-            app.getBoardHelper().boardCreation("New board Title");
+       // app.getNavigationHelper().openBoard();
+        app.getNavigationHelper().openBoardByIndex(boardCount - 1);
+        if (!app.getListHelper().isListPresent()) {
+            app.getListHelper().addList(new ListData("List Title"));
         }
-        app.getNavigationHelper().openBoard();
-        int listCount = app.getListHelper().getListCount();
-        int before = app.getCardHelper().getCardCount();
-        if (listCount == 0) {
-            app.getListHelper().addList("List Title");
-        }
-        if (before == 0) {
+        if (!app.getCardHelper().isCardPresent()) {
             app.getCardHelper().addCard("new card");
-            before = app.getCardHelper().getCardCount();
         }
-        //openCard
-        app.getCardHelper().openCard();
+        int before = app.getCardHelper().getCardCount();
+        //app.getCardHelper().openCard();
+        app.getCardHelper().openCardByIndex(before - 1);
         //submitCardArchiving
         app.getCardHelper().submitCardArchiving();
         //closeCard

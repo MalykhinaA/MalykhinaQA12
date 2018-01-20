@@ -1,23 +1,27 @@
 package tests;
 
+import model.BoardData;
+import model.ListData;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class ListArchivingTest extends TestBase {
     @Test
     public void listArchivingTest() {
+
+        if (!app.getBoardHelper().isBoardPresent()) {
+            app.getBoardHelper().createBoard(new BoardData("New board Title"));
+        }
         int boardCount = app.getBoardHelper().getBoardCount();
-        if (boardCount == 0) {
-            app.getBoardHelper().boardCreation("New board Title");
+        app.getNavigationHelper().openBoardByIndex(boardCount - 1);
+
+        if (!app.getListHelper().isListPresent()) {
+            app.getListHelper().addList(new ListData("List Title"));
         }
-        app.getNavigationHelper().openBoard();
         int before = app.getListHelper().getListCount();
-        if (before == 0) {
-            app.getListHelper().addList("List Title");
-            before = app.getListHelper().getListCount();
-        }
-        //initListArchiving
-        app.getListHelper().initListArchiving();
+
+       // app.getListHelper().openListActions();
+        app.getListHelper().openListActionsByIndex(before - 1);
         //submitListArchiving
         app.getListHelper().submitListArchiving();
         int after = app.getListHelper().getListCount();
