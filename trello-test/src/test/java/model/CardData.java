@@ -1,13 +1,14 @@
 package model;
 
 public class CardData {
-    private final String cardTitle;
-
-    public CardData(String cardTitle) {
-        this.cardTitle = cardTitle;
-    }
+    private String cardTitle;
 
     public String getCardTitle() {
         return cardTitle;
+    }
+
+    public CardData withCardTitle(String cardTitle) {
+        this.cardTitle = cardTitle;
+        return this;
     }
 }

@@ -33,7 +33,7 @@ public class AppManager {
         } else if(browser.equals(BrowserType.IE)){
             wd = new InternetExplorerDriver();
         }
-        wd.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        wd.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         sessionHelper = new SessionHelper(wd);
         sessionHelper.openSite();
         boardHelper = new BoardHelper(wd);
@@ -51,19 +51,19 @@ public class AppManager {
     }
 
 
-    public BoardHelper getBoardHelper() {
+    public BoardHelper boards() {
         return boardHelper;
     }
 
-    public ListHelper getListHelper() {
+    public ListHelper lists() {
         return listHelper;
     }
 
-    public CardHelper getCardHelper() {
+    public CardHelper cards() {
         return cardHelper;
     }
 
-    public NavigationHelper getNavigationHelper() {
+    public NavigationHelper goTo() {
         return navigationHelper;
     }
 

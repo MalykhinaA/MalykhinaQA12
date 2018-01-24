@@ -1,15 +1,10 @@
 package model;
 
 public class ContactData {
-    private final String name;
-    private final String surname;
-    private final String year;
+    private String name;
+    private String surname;
+    private String year;
 
-    public ContactData(String name, String surname, String year) {
-        this.name = name;
-        this.surname = surname;
-        this.year = year;
-    }
 
     public String getName() {
         return name;
@@ -21,5 +16,20 @@ public class ContactData {
 
     public String getYear() {
         return year;
+    }
+
+    public ContactData withName(String name) {
+        this.name = name;
+        return this;
+    }
+
+    public ContactData withSurname(String surname) {
+        this.surname = surname;
+        return this;
+    }
+
+    public ContactData withBirthYear(String year) {
+        this.year = year;
+        return this;
     }
 }

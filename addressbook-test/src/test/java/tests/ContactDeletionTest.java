@@ -8,17 +8,17 @@ public class ContactDeletionTest extends TestBase {
 
     @Test
     public void contactDeletionTest() {
-        if (!app.getContactHelper().isContactPresent()) {
-            app.getContactHelper().createContact(new ContactData("Name", "Surname", "1990"));
+        if (!app.contacts().isContactPresent()) {
+            app.contacts().createContact(new ContactData().withName("Name").withSurname("Surname").withBirthYear("1990"));
         }
-        int before = app.getContactHelper().getContactCount();
+        int before = app.contacts().getContactCount();
         //selectContact
         //app.getContactHelper().selectContact();
-        app.getContactHelper().selectContactByIndex(before - 1);
+        app.contacts().selectContactByIndex(before - 1);
         //submitContactDeletion
-        app.getContactHelper().submitContactDeletion();
+        app.contacts().submitContactDeletion();
         app.helperBase.alertAccept();
-        int after = app.getContactHelper().getContactCount();
+        int after = app.contacts().getContactCount();
         Assert.assertEquals(before, after + 1);
 
 

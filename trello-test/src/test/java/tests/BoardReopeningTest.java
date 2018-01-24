@@ -8,21 +8,25 @@ public class BoardReopeningTest extends TestBase{
 
     @Test
     public void reopenBoardTest(){
-        app.getBoardHelper().openBoardsList();
-        app.getBoardHelper().openClosedBoards();
-        if(!app.getBoardHelper().isClosedBoardPresent()){
-            app.getBoardHelper().closeClosedBoardList();
-            app.getBoardHelper().closeBoard();
-            app.getBoardHelper().openBoardsList();
-            app.getBoardHelper().openClosedBoards();
+        appManager.boards().openBoardsList();
+        appManager.boards().openClosedBoards();
+        if(!appManager.boards().isClosedBoardPresent()){
+            appManager.boards().closeClosedBoardList();
+            if(!appManager.boards().isBoardPresent()){
+                appManager.boards().createBoard(new BoardData().withBoardTitle("Board Title"));
+            }
+            appManager.boards().closeBoard();
+            appManager.boards().openBoardsList();
+            appManager.boards().openClosedBoards();
         }
-        int before = app.getBoardHelper().getBoardCount();
+        int before = appManager.boards().getBoardCount();
        // app.getBoardHelper().submitBoardReopening();
-        int closedBoardCount = app.getBoardHelper().getClosedBoardCount();
-        app.getBoardHelper().submitBoardReopeningByIndex(closedBoardCount - 1);
-        app.getNavigationHelper().reloadPage();
-        int after = app.getBoardHelper().getBoardCount();
+        int closedBoardCount = appManager.boards().getClosedBoardCount();
+        appManager.boards().submitBoardReopeningByIndex(closedBoardCount - 1);
+        appManager.goTo().reloadPage();
+        int after = appManager.boards().getBoardCount();
         Assert.assertEquals(before, after -1);
+
 
     }
 

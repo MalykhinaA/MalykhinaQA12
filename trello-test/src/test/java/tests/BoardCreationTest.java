@@ -7,20 +7,23 @@ import org.testng.annotations.Test;
 public class BoardCreationTest extends TestBase {
 
     @Test
-    public void boardCreationTest() {
-        int before = app.getBoardHelper().getBoardCount();
+    public void boardCreationTest() throws InterruptedException {
+        int before = appManager.boards().getBoardCount();
         //initBoardCreation
-        app.getBoardHelper().initBoardCreation();
+        appManager.boards().initBoardCreation();
         //typeBoardTitle
-        app.getBoardHelper().typeBoardTitle(new BoardData("New board Title"));
+        appManager.boards().typeBoardTitle(new BoardData().withBoardTitle("New board Title"));
         //submitBoardCreation
-        app.getBoardHelper().submitBoardCreation();
+        appManager.boards().submitBoardCreation();
+        appManager.goTo().pause(2000);
         //goToBoardsPage
-        app.getNavigationHelper().goToBoardsPage();
-        int after = app.getBoardHelper().getBoardCount();
+        appManager.goTo().boardsPage();
+        int after = appManager.boards().getBoardCount();
         Assert.assertEquals(before, after - 1);
 
     }
+
+
 
 
 }

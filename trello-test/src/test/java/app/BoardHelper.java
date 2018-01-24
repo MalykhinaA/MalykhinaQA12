@@ -47,6 +47,7 @@ public class BoardHelper extends HelperBase {
         initBoardCreation();
         typeBoardTitle(board);
         submitBoardCreation();
+        navigationHelper.boardsPage();
     }
     public void openBoardsList() {
         click(By.className("header-btn-text"));
@@ -80,13 +81,13 @@ public class BoardHelper extends HelperBase {
 
     public void closeBoard() {
         if (!isBoardPresent()) {
-            createBoard(new BoardData("New board Title"));
+            createBoard(new BoardData().withBoardTitle("board Title to delete"));
         }
         navigationHelper.openBoard();
         openMoreMenu();
         initBoardClosing();
         confirmBoardClosing();
-        navigationHelper.goToBoardsPage();
+        navigationHelper.boardsPage();
     }
 
     public void closeClosedBoardList() {

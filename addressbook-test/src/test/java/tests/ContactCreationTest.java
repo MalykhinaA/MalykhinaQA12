@@ -8,14 +8,14 @@ public class ContactCreationTest extends TestBase {
     //(enabled = false)
     @Test
     public void contactCreationTest() {
-        int before = app.getContactHelper().getContactCount();
+        int before = app.contacts().getContactCount();
         //initContactCreation
-        app.getContactHelper().initContactCreation();
+        app.contacts().initContactCreation();
         //fillContactForm
-        app.getContactHelper().fillContactForm(new ContactData("Name", "Surname", "1970"));
+        app.contacts().fillContactForm(new ContactData().withName("Nmae").withSurname("Surname").withBirthYear("1978"));
         //submitCreationContact
-        app.getContactHelper().submitContactCreation();
-        int after = app.getContactHelper().getContactCount();
+        app.contacts().submitContactCreation();
+        int after = app.contacts().getContactCount();
         Assert.assertEquals(before + 1, after);
     }
 

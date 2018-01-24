@@ -9,7 +9,7 @@ public class GroupCreationTest extends TestBase {
     @Test
     public void groupCreationTest() {
         //openGroupPage
-        app.goTo().openGroupPage();
+        app.goTo().groupsPage();
         int before = app.groups().getGroupCount();
         //initGroupCreation
         app.groups().initGroupCreation();
@@ -27,4 +27,3 @@ public class GroupCreationTest extends TestBase {
 
 
 }
-    

@@ -1,6 +1,7 @@
 package tests;
 
 import model.BoardData;
+import model.CardData;
 import model.ListData;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -8,27 +9,29 @@ import org.testng.annotations.Test;
 public class CardArchivingTest extends TestBase {
     @Test
     public void cardArchivingTest() {
-        if (!app.getBoardHelper().isBoardPresent()) {
-            app.getBoardHelper().createBoard(new BoardData("New board Title"));
+        if (!appManager.boards().isBoardPresent()) {
+            appManager.boards().createBoard(new BoardData().withBoardTitle("New board Title"));
         }
-        int boardCount = app.getBoardHelper().getBoardCount();
+       appManager.goTo().pause(2000);
+        int boardCount = appManager.boards().getBoardCount();
        // app.getNavigationHelper().openBoard();
-        app.getNavigationHelper().openBoardByIndex(boardCount - 1);
-        if (!app.getListHelper().isListPresent()) {
-            app.getListHelper().addList(new ListData("List Title"));
+        appManager.goTo().openBoardByIndex(boardCount - 1);
+        if (!appManager.lists().isListPresent()) {
+            appManager.lists().addList(new ListData().withListTitle("List Title"));
         }
-        if (!app.getCardHelper().isCardPresent()) {
-            app.getCardHelper().addCard("new card");
+        if (!appManager.cards().isCardPresent()) {
+            appManager.cards().addCard(new CardData().withCardTitle("Card Title"));
         }
-        int before = app.getCardHelper().getCardCount();
+        int before = appManager.cards().getCardCount();
         //app.getCardHelper().openCard();
-        app.getCardHelper().openCardByIndex(before - 1);
+        appManager.cards().openCardByIndex(before - 1);
         //submitCardArchiving
-        app.getCardHelper().submitCardArchiving();
+        appManager.cards().submitCardArchiving();
         //closeCard
-        app.getCardHelper().closeCard();
-        int after = app.getCardHelper().getCardCount();
+        appManager.cards().closeCard();
+        int after = appManager.cards().getCardCount();
         Assert.assertEquals(before, after + 1);
+        appManager.goTo().boardsPage();
 
     }
 

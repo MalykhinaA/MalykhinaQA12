@@ -5,6 +5,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class CardHelper extends HelperBase {
+    ListHelper listHelper = new ListHelper(wd);
+
 
     public CardHelper(WebDriver wd) {
         super(wd);
@@ -42,9 +44,10 @@ public class CardHelper extends HelperBase {
     }
 
     //adds
-    public void addCard(String cardTitle) {
+    public void addCard(CardData data) {
+        listHelper.openListActions();
         initCardAdding();
-        typeCardTitle(new CardData(cardTitle));
+        typeCardTitle(data);
         confirmCardAdding();
     }
 

@@ -9,23 +9,25 @@ public class ListArchivingTest extends TestBase {
     @Test
     public void listArchivingTest() {
 
-        if (!app.getBoardHelper().isBoardPresent()) {
-            app.getBoardHelper().createBoard(new BoardData("New board Title"));
+        if (!appManager.boards().isBoardPresent()) {
+            appManager.boards().createBoard(new BoardData().withBoardTitle("New board Title"));
         }
-        int boardCount = app.getBoardHelper().getBoardCount();
-        app.getNavigationHelper().openBoardByIndex(boardCount - 1);
+        appManager.goTo().pause(2000);
+        int boardCount = appManager.boards().getBoardCount();
+        appManager.goTo().openBoardByIndex(boardCount - 1);
 
-        if (!app.getListHelper().isListPresent()) {
-            app.getListHelper().addList(new ListData("List Title"));
+        if (!appManager.lists().isListPresent()) {
+            appManager.lists().addList(new ListData().withListTitle("List Title"));
         }
-        int before = app.getListHelper().getListCount();
+        int before = appManager.lists().getListCount();
 
        // app.getListHelper().openListActions();
-        app.getListHelper().openListActionsByIndex(before - 1);
+        appManager.lists().openListActionsByIndex(before - 1);
         //submitListArchiving
-        app.getListHelper().submitListArchiving();
-        int after = app.getListHelper().getListCount();
+        appManager.lists().submitListArchiving();
+        int after = appManager.lists().getListCount();
         Assert.assertEquals(before, after + 1);
+        appManager.goTo().boardsPage();
 
     }
 

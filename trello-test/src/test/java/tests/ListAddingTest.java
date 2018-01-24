@@ -9,18 +9,20 @@ public class ListAddingTest extends TestBase {
 
     @Test
     public void listAddingTest() {
-        if (!app.getBoardHelper().isBoardPresent()) {
-            app.getBoardHelper().createBoard(new BoardData("New board Title"));
+        if (!appManager.boards().isBoardPresent()) {
+            appManager.boards().createBoard(new BoardData().withBoardTitle("New board Title"));
         }
-        int boardCount = app.getBoardHelper().getBoardCount();
-        app.getNavigationHelper().openBoardByIndex(boardCount - 1);
+        appManager.goTo().pause(2000);
+        int boardCount = appManager.boards().getBoardCount();
+        appManager.goTo().openBoardByIndex(boardCount - 1);
 
-        int before = app.getListHelper().getListCount();
-        app.getListHelper().initListAdding();
-        app.getListHelper().typeListTitle(new ListData("List Title"));
-        app.getListHelper().submitListCreation();
-        int after = app.getListHelper().getListCount();
+        int before = appManager.lists().getListCount();
+        appManager.lists().initListAdding();
+        appManager.lists().typeListTitle(new ListData().withListTitle("List Title"));
+        appManager.lists().submitListCreation();
+        int after = appManager.lists().getListCount();
         Assert.assertEquals(before, after - 1);
+        appManager.goTo().boardsPage();
 
     }
 }

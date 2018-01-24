@@ -8,21 +8,21 @@ public class BoardClosingTest extends TestBase {
 
     @Test
     public void BoardClosingTest() {
-        if (!app.getBoardHelper().isBoardPresent()) {
-            app.getBoardHelper().createBoard(new BoardData("New board Title"));
+        if (!appManager.boards().isBoardPresent()) {
+            appManager.boards().createBoard(new BoardData().withBoardTitle("New board Title"));
         }
-        int before = app.getBoardHelper().getBoardCount();
+        int before = appManager.boards().getBoardCount();
         //openBoard
         //app.getNavigationHelper().openBoard();
-        app.getNavigationHelper().openBoardByIndex(before - 1);
+        appManager.goTo().openBoardByIndex(before - 1);
         //openMoreMenu
-        app.getBoardHelper().openMoreMenu();
+        appManager.boards().openMoreMenu();
         //initBoardClosing
-        app.getBoardHelper().initBoardClosing();
+        appManager.boards().initBoardClosing();
         //confirmBoardClosing
-        app.getBoardHelper().confirmBoardClosing();
-        app.getNavigationHelper().goToBoardsPage();
-        int after = app.getBoardHelper().getBoardCount();
+        appManager.boards().confirmBoardClosing();
+        appManager.goTo().boardsPage();
+        int after = appManager.boards().getBoardCount();
         Assert.assertEquals(before, after + 1);
     }
 

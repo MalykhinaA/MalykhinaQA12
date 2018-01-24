@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 public class GroupDeletionTest extends TestBase {
     @Test
     public void groupDeletionTest() {
-        app.goTo().openGroupPage();
+        app.goTo().groupsPage();
         if (!app.groups().isGroupPresent()) {
             //app.groups().createGroup(new GroupData("edit", "header1", "footer1"));
             app.groups().createGroup(new GroupData().withGroupName("GroupName").withHeader("Header").withFooter("Footer"));
