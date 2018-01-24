@@ -4,22 +4,24 @@ import model.GroupData;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class GroupModificationTests extends TestBase{
+public class GroupModificationTests extends TestBase {
 
     @Test
-    public void groupModifyTest(){
-        app.getNavigationHelper().openGroupPage();
-        if(!app.getGroupHelper().isGroupPresent()){
-            app.getGroupHelper().createGroup(new GroupData("name","header1",null));
+    public void groupModifyTest() {
+        app.goTo().openGroupPage();
+        if (!app.groups().isGroupPresent()) {
+            //app.groups().createGroup(new GroupData("name","header1",null));
+            app.groups().createGroup(new GroupData().withGroupName("GroupName").withHeader("Header").withFooter("Footer"));
         }
-        int before = app.getGroupHelper().getGroupCount();
-       // app.getGroupHelper().selectGroup();
-        app.getGroupHelper().selectGroupByIndex(before - 1);
-        app.getGroupHelper().initGroupModification();
-        app.getGroupHelper().fillGroupForm(new GroupData("edit", null, ""));
-        app.getGroupHelper().confirmGroupModification();
-        app.getGroupHelper().returnToGroupPage();
-        int after = app.getGroupHelper().getGroupCount();
+        int before = app.groups().getGroupCount();
+        // app.getGroupHelper().selectGroup();
+        app.groups().selectGroupByIndex(before - 1);
+        app.groups().initGroupModification();
+        //app.groups().fillGroupForm(new GroupData("edit", null, ""));
+        app.groups().fillGroupForm(new GroupData().withGroupName("GroupName").withHeader("Header").withFooter("Footer"));
+        app.groups().confirmGroupModification();
+        app.groups().returnToGroupPage();
+        int after = app.groups().getGroupCount();
         Assert.assertEquals(before, after);
 
     }

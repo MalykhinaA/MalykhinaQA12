@@ -25,14 +25,14 @@ public class ApplicationManager {
     }
 
     public void start() {
-        if(browser.equals(BrowserType.FIREFOX)){
+        if (browser.equals(BrowserType.FIREFOX)) {
             wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true));
-        }else if(browser.equals(BrowserType.CHROME)){
+        } else if (browser.equals(BrowserType.CHROME)) {
             wd = new ChromeDriver();
-        }else if(browser.equals(BrowserType.IE)){
+        } else if (browser.equals(BrowserType.IE)) {
             wd = new InternetExplorerDriver();
         }
-        wd.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        wd.manage().timeouts().implicitlyWait(7, TimeUnit.SECONDS);
         //goToSite
         sessionHelper = new SessionHelper(wd);
         sessionHelper.openSite("http://localhost/addressbook/");
@@ -45,19 +45,17 @@ public class ApplicationManager {
     }
 
 
-
     public void stop() {
         wd.quit();
     }
 
 
-
-
-    public GroupHelper getGroupHelper() {
+    public GroupHelper groups(
+    ) {
         return groupHelper;
     }
 
-    public NavigationHelper getNavigationHelper() {
+    public NavigationHelper goTo() {
         return navigationHelper;
     }
 

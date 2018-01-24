@@ -1,15 +1,9 @@
 package model;
 
 public class GroupData {
-    private final String groupName;
-    private final String header;
-    private final String footer;
-
-    public GroupData(String groupName, String header, String footer) {
-        this.groupName = groupName;
-        this.header = header;
-        this.footer = footer;
-    }
+    private String groupName;
+    private String header;
+    private String footer;
 
     public String getGroupName() {
         return groupName;
@@ -21,5 +15,20 @@ public class GroupData {
 
     public String getFooter() {
         return footer;
+    }
+
+    public GroupData withGroupName(String groupName) {
+        this.groupName = groupName;
+        return this;
+    }
+
+    public GroupData withHeader(String header) {
+        this.header = header;
+        return this;
+    }
+
+    public GroupData withFooter(String footer) {
+        this.footer = footer;
+        return this;
     }
 }

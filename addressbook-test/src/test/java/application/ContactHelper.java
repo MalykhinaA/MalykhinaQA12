@@ -25,6 +25,7 @@ public class ContactHelper extends HelperBase {
     public void selectContactByIndex(int index) {
         wd.findElements(By.xpath("//input[@type='checkbox']")).get(index).click();
     }
+
     public void submitContactCreation() {
         click(By.xpath("//input[@name='submit']"));
     }
@@ -41,7 +42,7 @@ public class ContactHelper extends HelperBase {
         click(By.linkText("add new"));
     }
 
-    public void initContactModification(int index ) {
+    public void initContactModification(int index) {
         wd.findElements(By.xpath("//*[@title='Edit']")).get(index).click();
     }
 

@@ -7,18 +7,19 @@ import org.testng.annotations.Test;
 public class GroupDeletionTest extends TestBase {
     @Test
     public void groupDeletionTest() {
-        app.getNavigationHelper().openGroupPage();
-        if(!app.getGroupHelper().isGroupPresent()){
-            app.getGroupHelper().createGroup(new GroupData("edit", "header1", "footer1"));
+        app.goTo().openGroupPage();
+        if (!app.groups().isGroupPresent()) {
+            //app.groups().createGroup(new GroupData("edit", "header1", "footer1"));
+            app.groups().createGroup(new GroupData().withGroupName("GroupName").withHeader("Header").withFooter("Footer"));
         }
-        int before = app.getGroupHelper().getGroupCount();
+        int before = app.groups().getGroupCount();
 
-       // app.getGroupHelper().selectGroup();//selectGroupTodelete
-        app.getGroupHelper().selectGroupByIndex(before-1);
-        app.getGroupHelper().submitGroupDeletion();//submitGroupDeletion
+        // app.getGroupHelper().selectGroup();//selectGroup
+        app.groups().selectGroupByIndex(before - 1);
+        app.groups().submitGroupDeletion();//submitGroupDeletion
         //returnToGroupPage
-        app.getGroupHelper().returnToGroupPage();
-        int after = app.getGroupHelper().getGroupCount();
+        app.groups().returnToGroupPage();
+        int after = app.groups().getGroupCount();
         Assert.assertEquals(before, after + 1);
     }
 

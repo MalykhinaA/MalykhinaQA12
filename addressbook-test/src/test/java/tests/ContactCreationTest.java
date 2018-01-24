@@ -5,8 +5,8 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class ContactCreationTest extends TestBase {
-
-    @Test(enabled = false)
+    //(enabled = false)
+    @Test
     public void contactCreationTest() {
         int before = app.getContactHelper().getContactCount();
         //initContactCreation

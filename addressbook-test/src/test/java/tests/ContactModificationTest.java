@@ -7,9 +7,9 @@ import org.testng.annotations.Test;
 public class ContactModificationTest extends TestBase {
 
     @Test
-    public void contactModifyTest(){
-        if(!app.getContactHelper().isContactPresent()){
-            app.getContactHelper().createContact(new ContactData("Name","Surname","1990"));
+    public void contactModifyTest() {
+        if (!app.getContactHelper().isContactPresent()) {
+            app.getContactHelper().createContact(new ContactData("Name", "Surname", "1990"));
         }
         int before = app.getContactHelper().getContactCount();
         app.getContactHelper().initContactModification(before - 1);

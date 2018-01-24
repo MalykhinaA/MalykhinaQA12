@@ -31,7 +31,7 @@ public class GroupHelper extends HelperBase {
         click(By.xpath("//input[@type='checkbox']"));
     }
 
-    public void selectGroupByIndex(int index){
+    public void selectGroupByIndex(int index) {
         wd.findElements(By.xpath("//input[@type='checkbox']")).get(index).click();
     }
 
