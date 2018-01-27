@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Objects;
+
 public class ContactData {
     private String name;
     private String surname;
@@ -31,5 +33,27 @@ public class ContactData {
     public ContactData withBirthYear(String year) {
         this.year = year;
         return this;
+    }
+
+    @Override
+    public String toString() {
+        return "ContactData = " +
+                "name: " + name +
+                ", surname: " + surname+"\n";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ContactData that = (ContactData) o;
+        return Objects.equals(name, that.name) &&
+                Objects.equals(surname, that.surname);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(name, surname, year);
     }
 }

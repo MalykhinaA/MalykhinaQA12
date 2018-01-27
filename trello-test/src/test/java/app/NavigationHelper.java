@@ -25,12 +25,16 @@ public class NavigationHelper extends HelperBase {
     public void reloadPage() {
         wd.navigate().refresh();
     }
+//    public void pause(Integer milliseconds){
+//        try {
+//            TimeUnit.MILLISECONDS.sleep(milliseconds);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+//    }
+    //!!!!!!!!!!!!!!!!!!
     public void pause(Integer milliseconds){
-        try {
-            TimeUnit.MILLISECONDS.sleep(milliseconds);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        wd.manage().timeouts();
     }
 
     public void openBoardByIndex(int index) {

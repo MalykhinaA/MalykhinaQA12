@@ -1,5 +1,6 @@
 package application;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
@@ -42,6 +43,10 @@ public class HelperBase {
         }
 
     }
+    public String generateRandomString(int length){
+        return RandomStringUtils.randomAlphabetic(length);
+    }
+
 
     public void alertAccept() {
         wd.switchTo().alert().accept();

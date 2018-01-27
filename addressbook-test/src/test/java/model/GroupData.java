@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Objects;
+
 public class GroupData {
     private String groupName;
     private String header;
@@ -30,5 +32,24 @@ public class GroupData {
     public GroupData withFooter(String footer) {
         this.footer = footer;
         return this;
+    }
+
+    @Override
+    public String toString() {
+        return "groupName = " + groupName + "\n";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        GroupData groupData = (GroupData) o;
+        return Objects.equals(groupName, groupData.groupName);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(groupName, header, footer);
     }
 }
