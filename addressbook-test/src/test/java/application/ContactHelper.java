@@ -81,10 +81,12 @@ public List<ContactData> getContactList() {
         List<ContactData> contacts = new ArrayList<>();
         List<WebElement> elementSurname = wd.findElements(By.xpath("//table/tbody/tr/td[2]"));
         List<WebElement> elementName = wd.findElements(By.xpath("//table/tbody/tr/td[3]"));
+        List<WebElement> iD = wd.findElements(By.xpath("//table/tbody/tr/td[1]/input"));
         for(int i = 0; i < elementName.size();i++){
-            String surname = elementSurname.get(i).getText();
+           int id = Integer.parseInt(iD.get(i).getAttribute("id"));
             String name = elementName.get(i).getText();
-            ContactData contact = new ContactData().withSurname(surname).withName(name);
+            String surName = elementSurname.get(i).getText();
+            ContactData contact = new ContactData().withId(id).withSurname(surName).withName(name);
             contacts.add(contact);
 
         }

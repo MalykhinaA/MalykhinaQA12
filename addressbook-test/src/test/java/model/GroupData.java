@@ -2,7 +2,8 @@ package model;
 
 import java.util.Objects;
 
-public class GroupData {
+public class GroupData implements Comparable<GroupData>{
+    private int id;
     private String groupName;
     private String header;
     private String footer;
@@ -17,6 +18,9 @@ public class GroupData {
 
     public String getFooter() {
         return footer;
+    }
+    public int getId() {
+        return id;
     }
 
     public GroupData withGroupName(String groupName) {
@@ -33,10 +37,9 @@ public class GroupData {
         this.footer = footer;
         return this;
     }
-
-    @Override
-    public String toString() {
-        return "groupName = " + groupName + "\n";
+    public GroupData withId(int id) {
+        this.id = id;
+        return this;
     }
 
     @Override
@@ -44,12 +47,24 @@ public class GroupData {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         GroupData groupData = (GroupData) o;
-        return Objects.equals(groupName, groupData.groupName);
+        return id == groupData.id &&
+                Objects.equals(groupName, groupData.groupName);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(groupName, header, footer);
+        return Objects.hash(id, groupName);
+    }
+
+    @Override
+    public String toString() {
+        return "id: " + id +
+                ", groupName: " + groupName + "\n";
+    }
+
+    @Override
+    public int compareTo(GroupData g) {
+        return this.id - g.id;
     }
 }

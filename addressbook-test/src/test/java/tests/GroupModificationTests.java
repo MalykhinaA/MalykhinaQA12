@@ -4,9 +4,8 @@ import model.GroupData;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.util.HashSet;
 import java.util.List;
-
-import static org.testng.Assert.assertEquals;
 
 public class GroupModificationTests extends TestBase {
 
@@ -23,27 +22,31 @@ public class GroupModificationTests extends TestBase {
         int index = before.size() - 1;
         app.groups().selectGroupByIndex(index);
         app.groups().initGroupModification();
-        //app.groups().fillGroupForm(new GroupData("edit", null, ""));
-        GroupData editedGroup = new GroupData().withGroupName(app.getHelperBase().generateRandomString(10)).withHeader("HeaderEdit").withFooter("FooterEdit");
+
+        GroupData editedGroup = new GroupData().withId(before.get(index).getId())
+                .withGroupName(app.getHelperBase().generateRandomString(10))
+                .withHeader("HeaderEdit")
+                .withFooter("FooterEdit");
         app.groups().fillGroupForm(editedGroup);
         app.groups().confirmGroupModification();
         app.groups().returnToGroupPage();
         //int after = app.groups().getGroupCount();
         List<GroupData> after = app.groups().getGroupList();
         Assert.assertEquals(before.size(), after.size());
-        //before.set(index, after.get(index));
-
-        boolean flag = false;
-        for(int i = after.size()-1; i >=0 ; i--){
-            if (after.get(i).equals(editedGroup)) {
-                flag = true;
-            } else if (!before.contains(after.get(i))) {
-                flag = false;
-                return;
-            }
-            before.remove(after.get(i));
-            after.remove(i);
-        }
-        assertEquals(flag, true);
+        before.remove(index);
+        before.add(editedGroup);
+        Assert.assertEquals(new HashSet<Object>(before), new HashSet<Object>(after));
+//        boolean flag = false;
+//        for(int i = after.size()-1; i >=0 ; i--){
+//            if (after.get(i).equals(editedGroup)) {
+//                flag = true;
+//            } else if (!before.contains(after.get(i))) {
+//                flag = false;
+//                return;
+//            }
+//            before.remove(after.get(i));
+//            after.remove(i);
+//        }
+//        assertEquals(flag, true);
     }
 }
