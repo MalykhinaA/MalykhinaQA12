@@ -13,3 +13,7 @@ gradle-app.setting
 # # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
 # gradle/wrapper/gradle-wrapper.properties
 .idea/workspace.xml
+<<<<<<< HEAD
+=======
+
+>>>>>>> 172ab528d74ed2d40982e46d06367c4f6e5f3bf0
