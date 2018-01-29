@@ -25,7 +25,9 @@ public class ContactCreationTest extends TestBase {
         List<ContactData> after = app.contacts().getContactList();
         Assert.assertEquals(before.size() + 1, after.size());
         Collections.sort(after);
+        System.out.println(after);
         before.add(after.get(after.size()-1));
+
         Assert.assertEquals(new HashSet<Object>(before), new HashSet<Object>(after));
 //        boolean flag = false;
 //        for (int i = after.size() - 1; i >= 0; i--) {

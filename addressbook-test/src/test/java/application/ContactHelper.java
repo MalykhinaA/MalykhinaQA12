@@ -64,19 +64,7 @@ public class ContactHelper extends HelperBase {
         submitContactCreation();
     }
 
-//    public List<ContactData> getContactList() {
-//        List<ContactData> contacts = new ArrayList<>();
-//        List<WebElement> elementSurname = wd.findElements(By.xpath("//table/tbody/tr/td[2]"));
-//        List<WebElement> elementName = wd.findElements(By.xpath("//table/tbody/tr/td[3]"));
-//        for(int i = 0; i < elementName.size();i++){
-//            String surname = elementSurname.get(i).getText();
-//            String name = elementName.get(i).getText();
-//            ContactData contact = new ContactData().withSurname(surname).withName(name);
-//            contacts.add(contact);
-//
-//        }
-//        return contacts;
-//    }
+
 public List<ContactData> getContactList() {
         List<ContactData> contacts = new ArrayList<>();
         List<WebElement> elementSurname = wd.findElements(By.xpath("//table/tbody/tr/td[2]"));
@@ -92,4 +80,6 @@ public List<ContactData> getContactList() {
         }
         return contacts;
     }
+
+
 }
