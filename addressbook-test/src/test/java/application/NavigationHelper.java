@@ -19,4 +19,10 @@ public class NavigationHelper extends HelperBase {
     }
 
 
+    public void homePage() {
+        if (isElementPresent(By.tagName("strong")) && wd.findElement(By.tagName("strong")).getText().equals("Number of results: ")) {
+            return;
+        }
+        click(By.linkText("home"));
+    }
 }

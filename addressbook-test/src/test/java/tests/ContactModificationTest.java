@@ -12,10 +12,12 @@ public class ContactModificationTest extends TestBase {
 
     @Test
     public void contactModifyTest() {
+        app.goTo().homePage();
         if (!app.contacts().isContactPresent()) {
             app.contacts().createContact(new ContactData().withName("New name").withSurname("Surname").withBirthYear(null));
         }
         //int before = app.contacts().getContactCount();
+
         List<ContactData> before = app.contacts().getContactList();
         int index = before.size() - 1;
         app.contacts().initContactModification(index);

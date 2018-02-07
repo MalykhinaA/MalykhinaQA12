@@ -10,6 +10,7 @@ public class ContactDeletionTest extends TestBase {
 
     @Test
     public void contactDeletionTest() {
+        app.goTo().homePage();
         if (!app.contacts().isContactPresent()) {
             app.contacts().createContact(new ContactData().withName("Name").withSurname("Surname").withBirthYear("1990"));
         }

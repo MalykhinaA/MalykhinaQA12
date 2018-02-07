@@ -2,16 +2,28 @@ package tests;
 
 import model.GroupData;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
+import java.io.*;
+import java.util.*;
 
 public class GroupCreationTest extends TestBase {
-
-    @Test
-    public void groupCreationTest() {
+    @DataProvider
+    public Iterator<Object[]> validGroups() throws IOException {
+        List<Object[]>list = new ArrayList<>();
+        BufferedReader bReader = new BufferedReader(new FileReader( new File("src/test/resources/groups.csv")));
+        String line = bReader.readLine();
+        while(line!=null){
+            String[] split = line.split(";");
+            list.add(new Object[]{new GroupData().withHeader(split[0]).withGroupName(split[1]).withFooter(split[2])});
+            line = bReader.readLine();
+        }
+        bReader.close();
+        return list.iterator();
+    }
+    @Test(dataProvider = "validGroups")
+    public void groupCreationTest(GroupData group) {
         //openGroupPage
         app.goTo().groupsPage();
         List<GroupData> before = app.groups().getGroupList();
@@ -20,8 +32,8 @@ public class GroupCreationTest extends TestBase {
         app.groups().initGroupCreation();
         //fillGroupForm
         //app.groups().createGroup(new GroupData("edit", "header1", "footer1"));
-        GroupData newGroup = new GroupData().withGroupName("GroupName1").withHeader("Header").withFooter("Footer");
-        app.groups().fillGroupForm(newGroup);
+
+        app.groups().fillGroupForm(group);
         //submitGroupCreation
         app.groups().submitGroupCreation();
         //returnToGroupPage

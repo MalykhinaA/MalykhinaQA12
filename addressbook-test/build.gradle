@@ -16,3 +16,14 @@ dependencies {
     compile 'org.apache.commons:commons-lang3:3.7' //for import org.apache.commons.lang3.RandomStringUtils;
 
 }
+task testGroups(type: Test) {
+    useTestNG {
+        suites 'src/test/resources/testng-groups.xml'
+    }
+}
+task testContacts(type: Test) {
+    useTestNG {
+        suites 'src/test/resources/testng-contacts.xml'
+    }
+}
+

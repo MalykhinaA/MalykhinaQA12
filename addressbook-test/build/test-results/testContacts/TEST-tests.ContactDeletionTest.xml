@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="tests.ContactDeletionTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2018-02-01T11:01:02" hostname="Lenovo-AM" time="4.583">
+  <properties/>
+  <testcase name="contactDeletionTest" classname="tests.ContactDeletionTest" time="4.583"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
