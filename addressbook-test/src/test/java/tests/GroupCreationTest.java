@@ -5,10 +5,15 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.*;
 
+
 public class GroupCreationTest extends TestBase {
+
     @DataProvider
     public Iterator<Object[]> validGroups() throws IOException {
         List<Object[]>list = new ArrayList<>();
@@ -24,6 +29,7 @@ public class GroupCreationTest extends TestBase {
     }
     @Test(dataProvider = "validGroups")
     public void groupCreationTest(GroupData group) {
+        //logger.info("Start test groupCreationTest");
         //openGroupPage
         app.goTo().groupsPage();
         List<GroupData> before = app.groups().getGroupList();
@@ -44,6 +50,7 @@ public class GroupCreationTest extends TestBase {
         Collections.sort(after);
         before.add(after.get(after.size()-1));
         Assert.assertEquals(new HashSet<Object>(before), new HashSet<Object>(after));
+      //  logger.info("Finish test groupCreationTest");
 //        boolean flag = false;
 //        for (int i = after.size() - 1; i >= 0; i--) {
 //            if (after.get(i).equals(newGroup)) {

@@ -37,10 +37,13 @@ public class ContactHelper extends HelperBase {
     public void fillContactForm(ContactData contactData) {
         type(By.name("firstname"), contactData.getName());
         type(By.name("lastname"), contactData.getSurname());
-        click(By.xpath("//div[@id='content']/form/select[1]//option[3]"));
-        click(By.xpath("//div[@id='content']/form/select[2]//option[2]"));
+        //click(By.xpath("//div[@id='content']/form/select[1]//option[3]"));
+       // click(By.xpath("//div[@id='content']/form/select[2]//option[2]"));
         type(By.name("byear"), contactData.getYear());
+        attach(By.name("photo"),contactData.getPhoto());
+
     }
+
 
     public void initContactCreation() {
         click(By.linkText("add new"));

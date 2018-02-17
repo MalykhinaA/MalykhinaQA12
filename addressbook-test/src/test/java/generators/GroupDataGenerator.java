@@ -18,7 +18,8 @@ public class GroupDataGenerator {
             Writer writer = new FileWriter(file);
             BufferedWriter bw = new BufferedWriter(writer);
             for(GroupData group : groups){
-                bw.write(String.format("%s;%s;%s;\n", group.getHeader(), group.getGroupName(), group.getFooter()));
+                bw.write(String.format("%s;%s;%s;", group.getHeader(), group.getGroupName(), group.getFooter()));
+                bw.newLine();
             }
             bw.close();
 

@@ -1,5 +1,6 @@
 package model;
 
+import java.io.File;
 import java.util.Objects;
 
 public class ContactData implements Comparable<ContactData>{
@@ -7,6 +8,17 @@ public class ContactData implements Comparable<ContactData>{
     private String name;
     private String surname;
     private String year;
+
+    public File getPhoto() {
+        return photo;
+    }
+
+    public ContactData withPhoto(File photo) {
+        this.photo = photo;
+        return this;
+    }
+
+    private File photo;
 
     public int getId() {
         return id;
